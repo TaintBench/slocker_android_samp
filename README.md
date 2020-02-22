@@ -1,3 +1,4 @@
+# PROFILE
 # Installation:
 ![ICON](icon.png)
 # General Information:
@@ -36,7 +37,7 @@ sleep.
 	android.permission.RECEIVE_BOOT_COMPLETED
 	android.permission.WRITE_EXTERNAL_STORAGE
 	android.permission.READ_PHONE_STATE
-## Sources: 25
+## Sources: 30
 	<java.io.BufferedReader: java.lang.String readLine()>: 6
 	<javax.crypto.Cipher: byte[] doFinal(byte[])>: 2
 	<java.util.Locale: java.lang.String getISO3Country()>: 2
@@ -47,12 +48,17 @@ sleep.
 	<java.util.Date: int getYear()>: 2
 	<java.util.Date: int getDate()>: 2
 	<android.telephony.TelephonyManager: java.lang.String getDeviceId()>: 2
+	<org.apache.http.HttpEntity: java.io.InputStream getContent()>: 4
+	<java.io.FileInputStream: void <init>: 1
 	<javax.crypto.Cipher: javax.crypto.Cipher getInstance(java.lang.String)>: 2
-	<android.widget.EditText: android.text.Editable getText()>: 10
+	<android.widget.EditText: android.text.Editable getText()>: 11
+	<android.content.Context: java.lang.Object getSystemService(java.lang.String)>: 1
+	<java.io.File: java.io.File[] listFiles()>: 3
 	<java.io.File: java.lang.String getName()>: 2
 	<javax.crypto.KeyGenerator: javax.crypto.KeyGenerator getInstance(java.lang.String)>: 1
 	<android.app.KeyguardManager: android.app.KeyguardManager$KeyguardLock newKeyguardLock(java.lang.String)>: 1
 	<java.util.Locale: java.util.Locale getDefault()>: 2
+	<java.io.File: void <init>: 7
 	<java.io.File: java.lang.String getAbsolutePath()>: 8
 	<java.lang.String: byte[] getBytes()>: 2
 	<android.net.ConnectivityManager: android.net.NetworkInfo getActiveNetworkInfo()>: 1
@@ -62,25 +68,30 @@ sleep.
 	<android.content.ComponentName: java.lang.String getPackageName()>: 2
 	<android.content.Context: java.lang.String getString(int)>: 3
 	<java.util.Calendar: int get(int)>: 1
-## Sinks: 21
-	<android.view.Window: void setType(int)>: 5
-	<android.widget.TextView: void setText(java.lang.CharSequence)>: 7
-	<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>: 1
+## Sinks: 26
 	<android.content.Intent: android.content.Intent setAction(java.lang.String)>: 1
 	<android.widget.ProgressBar: void setMax(int)>: 1
 	<android.net.Uri: android.net.Uri parse(java.lang.String)>: 2
-	<java.io.OutputStream: void write(byte[])>: 1
-	<android.widget.ProgressBar: void setProgress(int)>: 1
 	<android.widget.Toast: void setGravity(int,int,int)>: 1
-	<android.util.Log: int v(java.lang.String,java.lang.String)>: 8
 	<android.app.ActivityManager: java.util.List getRunningTasks(int)>: 1
 	<android.view.Window: void setFlags(int,int)>: 3
 	<java.lang.String: java.lang.String substring(int,int)>: 2
 	<android.content.Intent: android.content.Intent setFlags(int)>: 3
-	<android.app.Activity: void onCreate(android.os.Bundle)>: 3
+	<android.widget.Toast: android.widget.Toast makeText(android.content.Context,java.lang.CharSequence,int)>: 2
+	<android.content.Context: android.content.ComponentName startService(android.content.Intent)>: 1
 	<org.apache.http.entity.AbstractHttpEntity: void setContentEncoding(java.lang.String)>: 4
-	<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>: 1
 	<java.security.SecureRandom: void setSeed(byte[])>: 1
 	<org.apache.http.entity.AbstractHttpEntity: void setContentType(java.lang.String)>: 4
-	<android.util.Log: int e(java.lang.String,java.lang.String)>: 3
 	<android.content.Intent: android.content.Intent putExtra(java.lang.String,android.os.Parcelable)>: 1
+	<android.view.Window: void setType(int)>: 5
+	<android.widget.TextView: void setText(java.lang.CharSequence)>: 7
+	<android.content.Intent: android.content.Intent putExtra(java.lang.String,java.lang.String)>: 1
+	<java.io.OutputStream: void write(byte[])>: 1
+	<android.widget.ProgressBar: void setProgress(int)>: 1
+	<android.util.Log: int v(java.lang.String,java.lang.String)>: 8
+	<java.io.FileOutputStream: void <init>: 3
+	<android.content.Context: void startActivity(android.content.Intent)>: 4
+	<org.apache.http.client.HttpClient: org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>: 4
+	<android.app.Activity: void onCreate(android.os.Bundle)>: 3
+	<android.content.Intent: android.content.Intent putExtra(java.lang.String,int)>: 1
+	<android.util.Log: int e(java.lang.String,java.lang.String)>: 3
