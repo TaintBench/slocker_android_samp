@@ -82,7 +82,8 @@
         "staticField": true
       },
       "ID": 1,
-      "description": "This malicious flow reads device id and puts into a ArrayList of name value pairs. This list is sent to a remote server per an HTTP Post request."
+      "description": "This malicious flow reads device id and puts into a ArrayList of name value pairs. This list is sent to a remote server per an HTTP Post request.",
+      "isNegative": false
     },
     {
       "source": {
@@ -186,7 +187,8 @@
         "threading": true
       },
       "ID": 2,
-      "description": "This malicious flow reads device id and puts into a ArrayList of name value pairs. This list is sent to a remote server per an HTTP Post request."
+      "description": "This malicious flow reads device id and puts into a ArrayList of name value pairs. This list is sent to a remote server per an HTTP Post request.",
+      "isNegative": false
     },
     {
       "source": {
@@ -260,7 +262,8 @@
         "threading": true
       },
       "ID": 3,
-      "description": "This malicious flows reads the inputed code and sends it to a remote server via HTTP POST request."
+      "description": "This malicious flows reads the inputed code and sends it to a remote server via HTTP POST request.",
+      "isNegative": false
     },
     {
       "source": {
@@ -295,7 +298,7 @@
         {
           "statement": "request.sendCode(string, SenderActivity.imei);",
           "methodName": "public void run()",
-          "className": "com.android.locker.SenderActivity.AnonymousClass13",
+          "className": "com.android.locker.SenderActivity.AnonymousClass13.AnonymousClass1",
           "lineNo": 282,
           "ID": 1
         },
@@ -334,7 +337,85 @@
         "threading": true
       },
       "ID": 4,
-      "description": "This malicious flow reads the inputed code and sends to a remote server via HTTP POST request."
+      "description": "This malicious flow reads the inputed code and sends to a remote server via HTTP POST request.",
+      "isNegative": false
+    },
+    {
+      "source": {
+        "statement": "imei = ((TelephonyManager) getSystemService(\"phone\")).getDeviceId();",
+        "methodName": "public void onCreate(Bundle savedInstanceState)",
+        "className": "com.android.locker.SenderActivity",
+        "lineNo": 129,
+        "targetName": "getDeviceId",
+        "targetNo": 1,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r5 = virtualinvoke $r4.<android.telephony.TelephonyManager: java.lang.String getDeviceId()>()"
+          }
+        ]
+      },
+      "sink": {
+        "statement": "is = httpclient.execute(httppost).getEntity().getContent();",
+        "methodName": "public String checkState(String imei)",
+        "className": "com.android.locker.RequestSender",
+        "lineNo": 117,
+        "targetName": "execute",
+        "targetNo": 1,
+        "IRs": [
+          {
+            "type": "Jimple",
+            "IRstatement": "$r13 = interfaceinvoke $r3.<org.apache.http.client.HttpClient: org.apache.http.HttpResponse execute(org.apache.http.client.methods.HttpUriRequest)>($r9)"
+          }
+        ]
+      },
+      "intermediateFlows": [
+        {
+          "statement": "if (request.isOnline()) {",
+          "methodName": "public void onClick(View v)",
+          "className": "com.android.locker.SenderActivity.AnonymousClass13",
+          "lineNo": 275,
+          "ID": 1
+        },
+        {
+          "statement": "if (requestSender.checkState(SenderActivity.imei).contains(\"2\")) {",
+          "methodName": "public void onClick(View v)",
+          "className": "com.android.locker.SenderActivity.AnonymousClass13",
+          "lineNo": 300,
+          "ID": 2
+        },
+        {
+          "statement": "nameValuePairs.add(new BasicNameValuePair(\"imei\", imei));",
+          "methodName": "public String checkState(String imei)",
+          "className": "com.android.locker.RequestSender",
+          "lineNo": 107,
+          "ID": 3
+        },
+        {
+          "statement": "AbstractHttpEntity uefe = new UrlEncodedFormEntity(nameValuePairs, \"UTF-8\");",
+          "methodName": "public String checkState(String imei)",
+          "className": "com.android.locker.RequestSender",
+          "lineNo": 109,
+          "ID": 4
+        },
+        {
+          "statement": "httppost.setEntity(uefe);",
+          "methodName": "public String checkState(String imei)",
+          "className": "com.android.locker.RequestSender",
+          "lineNo": 112,
+          "ID": 5
+        }
+      ],
+      "attributes": {
+        "callbacks": true,
+        "collections": true,
+        "lifecycle": true,
+        "pathConstraints": true,
+        "staticField": true
+      },
+      "ID": 5,
+      "description": "This malicious flow reads device id and sends it to a remote server via an HTTP post.",
+      "isNegative": false
     }
   ]
 }
